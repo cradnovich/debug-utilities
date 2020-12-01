@@ -1,0 +1,21 @@
+import Foundation
+
+extension Data
+{
+  public var debugDescription: String
+  {
+    s
+  }
+  
+  public var s: String
+  {
+    String(data: self, encoding: .utf8) ?? byteDescription
+  }
+  
+  public var byteDescription: String
+  {
+    let bytes = map { return String.localizedStringWithFormat("%02X", $0) }.joined()
+    
+    return bytes.partitioned(every: 8).joined(separator: " ")
+  }
+}
